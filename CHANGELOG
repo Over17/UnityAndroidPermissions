@@ -1,3 +1,8 @@
-Version 0.1 (2016-07-04)
+Version 0.2 (2017-07-07)
+
+* There's no more need to override the main manifest - the plugin's manifest contains the necessary SkipPermissionsDialog metadata flag
+
+
+Version 0.1 (2017-07-04)
 
 * Initial version

@@ -17,10 +17,9 @@ This plugin is one of the Android runtime permissions for Unity implementations.
 
 ## Usage
 0.	Should work with Unity 5.3+. Please report an issue if it does not for you
-1.	Add the plugin to your project. You need the manifest, the AAR and the C# script (Assets/Plugins/Android/AndroidManifest.xml, Assets/Plugins/Android/unityandroidpermissions.aar and Assets/AndroidPermissionsManager.cs)
-2.	Please pay attention to the manifest - you may want to use the one provided here or, if you have your own base manifest, please make sure to add "unityplayer.SkipPermissionsDialog"="true" metadata tag to application or activity section
-3.	Use the C# API in your scripts to check the permission status and request it if necessary, right before you actually need this permission
-4.	Enjoy
+1.	Add the plugin to your project. You need the AAR and the C# script (Assets/Plugins/Android/unityandroidpermissions.aar and Assets/AndroidPermissionsManager.cs)
+2.	Use the C# API in your scripts to check the permission status and request it if necessary, right before you actually need this permission
+3.	Enjoy
 
 ## How to Build
 Use Android Studio to build the AAR from the source in src/ directory.
