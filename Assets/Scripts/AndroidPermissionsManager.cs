@@ -1,19 +1,42 @@
+using System;
 using UnityEngine;
 
 public class AndroidPermissionCallback : AndroidJavaProxy
 {
-    public AndroidPermissionCallback() : base("com.unity3d.player.UnityAndroidPermissions$IPermissionRequestResult") { }
+	private event Action<string> OnPermissionGrantedAction;
+	private event Action<string> OnPermissionDeniedAction;
+
+	public AndroidPermissionCallback(Action<string> onGrantedCallback, Action<string> onDeniedCallback) : base(
+		"com.unity3d.player.UnityAndroidPermissions$IPermissionRequestResult")
+	{
+		if (onGrantedCallback != null)
+		{
+			OnPermissionGrantedAction += onGrantedCallback;
+		}
+		if (onDeniedCallback != null)
+		{
+			OnPermissionDeniedAction += onDeniedCallback;
+		}
+	}
 
     // Handle permission granted
     public virtual void OnPermissionGranted(string permissionName)
     {
         //Debug.Log("Permission " + permissionName + " GRANTED");
+	    if (OnPermissionGrantedAction != null)
+	    {
+		    OnPermissionGrantedAction.Invoke(permissionName);
+	    }
     }
 
     // Handle permission denied
     public virtual void OnPermissionDenied(string permissionName)
     {
         //Debug.Log("Permission " + permissionName + " DENIED!");
+	    if (OnPermissionDeniedAction != null)
+	    {
+		    OnPermissionDeniedAction.Invoke(permissionName);
+	    }
     }
 }
 

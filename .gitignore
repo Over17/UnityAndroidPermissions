@@ -1,1 +1,6 @@
 *.meta
+Library
+Temp
+ProjectSettings
+*.csproj
+*.sln
