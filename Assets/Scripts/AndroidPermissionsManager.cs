@@ -4,15 +4,30 @@ public class AndroidPermissionCallback : AndroidJavaProxy
 {
     public AndroidPermissionCallback() : base("com.unity3d.player.UnityAndroidPermissions$IPermissionRequestResult") { }
 
+    public bool IsCallbackComplete
+    {
+        protected set;
+        get;
+    }
+    public bool IsGranted
+    {
+        protected set;
+        get;
+    }
+
     // Handle permission granted
     public virtual void OnPermissionGranted(string permissionName)
     {
         //Debug.Log("Permission " + permissionName + " GRANTED");
+        IsCallbackComplete = true;
+        IsGranted = true;
     }
 
     // Handle permission denied
     public virtual void OnPermissionDenied(string permissionName)
     {
+        IsCallbackComplete = true;
+        IsGranted = false;
         //Debug.Log("Permission " + permissionName + " DENIED!");
     }
 }
