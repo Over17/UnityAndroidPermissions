@@ -4,3 +4,4 @@ Temp
 ProjectSettings
 *.csproj
 *.sln
+.vs/

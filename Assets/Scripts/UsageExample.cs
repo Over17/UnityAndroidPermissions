@@ -7,19 +7,19 @@ public class UsageExample : MonoBehaviour {
 	private const string STORAGE_PERMISSION = "android.permission.READ_EXTERNAL_STORAGE";
 
 
-	//Function which callled first, by UI button, for example click on Avatar to change it from device gallery
-	public void OnBrowsGalleryButtonPress()
+	//Function which called first, by UI button, for example click on Avatar to change it from device gallery
+	public void OnBrowseGalleryButtonPress()
 	{
 		if (!CheckPermissions())
 		{
-			Debug.Log("Missing permission to brows device gallery, please grant permission first");
+			Debug.Log("Missing permission to browse device gallery, please grant permission first");
 
-			//Your code to show in-game pop-up with explanation why do you need this permission (required for Google Featuring programm)
-			//this pop-up should include button "Grant Access" which will be linked to the function "OnGrantButtonPress" bellow
+			//Your code to show in-game pop-up with explanation why do you need this permission (required for Google Featuring program)
+			//this pop-up should include a button "Grant Access" which will be linked to the function "OnGrantButtonPress" below
 			return;
 		}
 
-		//Your code to brows Android Gallery
+		//Your code to browse Android Gallery
 		Debug.Log("Browsing Gallery...");
 	}
 
@@ -31,7 +31,6 @@ public class UsageExample : MonoBehaviour {
 		}
 
 		return AndroidPermissionsManager.IsPermissionGranted(STORAGE_PERMISSION);
-
 	}
 
 	public void OnGrantButtonPress()
@@ -40,7 +39,7 @@ public class UsageExample : MonoBehaviour {
 			grantedPermission =>
 			{
 				//Permission was successfully granted, restart the change avatar routine
-				OnBrowsGalleryButtonPress();
+				OnBrowseGalleryButtonPress();
 			},
 			deniedPermission =>
 			{
