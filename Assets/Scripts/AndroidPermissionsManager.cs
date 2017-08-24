@@ -25,7 +25,7 @@ public class AndroidPermissionCallback : AndroidJavaProxy
         //Debug.Log("Permission " + permissionName + " GRANTED");
         if (OnPermissionGrantedAction != null)
         {
-            OnPermissionGrantedAction.Invoke(permissionName);
+            OnPermissionGrantedAction(permissionName);
         }
     }
 
@@ -35,7 +35,7 @@ public class AndroidPermissionCallback : AndroidJavaProxy
         //Debug.Log("Permission " + permissionName + " DENIED!");
         if (OnPermissionDeniedAction != null)
         {
-            OnPermissionDeniedAction.Invoke(permissionName);
+            OnPermissionDeniedAction(permissionName);
         }
     }
 }
