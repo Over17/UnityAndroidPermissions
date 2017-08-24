@@ -61,7 +61,6 @@ public class AndroidPermissionsManager
             (m_PermissionService = new AndroidJavaObject("com.unity3d.player.UnityAndroidPermissions"));
     }
 
-
     public static bool IsPermissionGranted(string permissionName)
     {
         return GetPermissionsService().Call<bool>("IsPermissionGranted", GetActivity(), permissionName);
