@@ -1,3 +1,10 @@
+Version 0.3 (2017-08-24)
+
+* Moved the plugin code to utilize delegates instead of having to override the callback methods
+* Added sample script
+* Big thanks to @Briksins for his contribution
+
+
 Version 0.2 (2017-07-07)
 
 * There's no more need to override the main manifest - the plugin's manifest contains the necessary SkipPermissionsDialog metadata flag
