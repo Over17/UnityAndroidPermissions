@@ -1,7 +1,8 @@
+Library/
+Packages/
+ProjectSettings/
+Temp/
 *.meta
-Library
-Temp
-ProjectSettings
 *.csproj
 *.sln
 .vs/
