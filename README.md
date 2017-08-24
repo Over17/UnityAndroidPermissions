@@ -17,9 +17,11 @@ This plugin is one of the Android runtime permissions for Unity implementations.
 
 ## Usage
 0.	Should work with Unity 5.3+. Please report an issue if it does not for you
-1.	Add the plugin to your project. You need the AAR and the C# script (Assets/Plugins/Android/unityandroidpermissions.aar and Assets/AndroidPermissionsManager.cs)
+1.	Add the plugin to your project. You need the AAR and the C# script (Assets/Plugins/Android/unityandroidpermissions.aar and Assets/Scripts/AndroidPermissionsManager.cs)
 2.	Use the C# API in your scripts to check the permission status and request it if necessary, right before you actually need this permission
 3.	Enjoy
+
+For more details please refer to `Assets/Scripts/AndroidPermissionsManager.cs` script
 
 ## How to Build
 Use Android Studio to build the AAR from the source in src/ directory.
