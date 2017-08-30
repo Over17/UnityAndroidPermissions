@@ -1,4 +1,4 @@
-package com.unity3d.player;
+package com.unity3d.plugin;
 
 import android.app.Activity;
 import android.app.Fragment;
