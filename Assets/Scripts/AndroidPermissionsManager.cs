@@ -7,7 +7,7 @@ public class AndroidPermissionCallback : AndroidJavaProxy
     private event Action<string> OnPermissionDeniedAction;
 
     public AndroidPermissionCallback(Action<string> onGrantedCallback, Action<string> onDeniedCallback) 
-        : base("com.unity3d.player.UnityAndroidPermissions$IPermissionRequestResult")
+        : base("com.unity3d.plugin.UnityAndroidPermissions$IPermissionRequestResult")
     {
         if (onGrantedCallback != null)
         {
@@ -58,7 +58,7 @@ public class AndroidPermissionsManager
     private static AndroidJavaObject GetPermissionsService()
     {
         return m_PermissionService ??
-            (m_PermissionService = new AndroidJavaObject("com.unity3d.player.UnityAndroidPermissions"));
+            (m_PermissionService = new AndroidJavaObject("com.unity3d.plugin.UnityAndroidPermissions"));
     }
 
     public static bool IsPermissionGranted(string permissionName)
