@@ -15,6 +15,7 @@ public class PermissionFragment extends Fragment
 
     public PermissionFragment()
     {
+        m_ResultCallbacks = null;
     }
 
     public PermissionFragment(final UnityAndroidPermissions.IPermissionRequestResult resultCallbacks)
@@ -25,8 +26,15 @@ public class PermissionFragment extends Fragment
     @Override public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        String[] permissionNames = getArguments().getStringArray(PERMISSION_NAMES);
-        requestPermissions(permissionNames, PERMISSIONS_REQUEST_CODE);
+        if (m_ResultCallbacks == null)
+        {
+            getFragmentManager().beginTransaction().remove(this).commit();
+        }
+        else
+        {
+			String[] permissionNames = getArguments().getStringArray(PERMISSION_NAMES);
+			requestPermissions(permissionNames, PERMISSIONS_REQUEST_CODE);
+		}
     }
 
     @Override public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
@@ -42,7 +50,7 @@ public class PermissionFragment extends Fragment
                 m_ResultCallbacks.OnPermissionDenied(permissions[i]);
         }
 
-        FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.remove(this);
         fragmentTransaction.commit();
     }
