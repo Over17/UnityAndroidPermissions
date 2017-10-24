@@ -13,7 +13,10 @@ public class PermissionFragment extends Fragment
 
     private final UnityAndroidPermissions.IPermissionRequestResult m_ResultCallbacks;
 
-    // Not a nice thing to do - having a non-default Fragment constructor
+    public PermissionFragment()
+    {
+    }
+
     public PermissionFragment(final UnityAndroidPermissions.IPermissionRequestResult resultCallbacks)
     {
         m_ResultCallbacks = resultCallbacks;
