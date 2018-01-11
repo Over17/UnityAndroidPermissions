@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class UsageExample : MonoBehaviour
+public class AndroidPermissionsUsageExample : MonoBehaviour
 {
     private const string STORAGE_PERMISSION = "android.permission.READ_EXTERNAL_STORAGE";
 
