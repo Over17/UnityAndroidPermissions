@@ -2,6 +2,7 @@ Library/
 Packages/
 ProjectSettings/
 Temp/
+UnityPackageManager/
 *.meta
 *.csproj
 *.sln
