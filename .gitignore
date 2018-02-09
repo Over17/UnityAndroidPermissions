@@ -1,6 +1,8 @@
 Library/
 Packages/
 ProjectSettings/
+src/UnityAndroidPermissions/.gradle/
+src/UnityAndroidPermissions/build/
 Temp/
 UnityPackageManager/
 *.meta
