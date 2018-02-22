@@ -24,7 +24,7 @@ This plugin is one of the Android runtime permissions for Unity implementations.
 For a script sample, please refer to `Assets/Scripts/AndroidPermissionsUsageExample.cs`.
 
 ## How to Build
-Use Android Studio to build the AAR from the source in src/ directory.
+Run `gradlew assemble` from src/UnityAndroidPermissions/
 
 ## See Also
 Please refer to Google documentation for more details: https://developer.android.com/training/permissions/requesting.html
