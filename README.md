@@ -13,7 +13,7 @@ This plugin is one of the Android runtime permissions for Unity implementations.
 
 `AndroidPermissionsManager` is the class which provides you the following methods:
 -	`bool IsPermissionGranted(string permissionName)` to check the status of a permission
--	`void RequestPermission(string[] permissionNames, AndroidPermissionCallback callback)` to query for an array of permissions. Pass `AndroidPermissionCallback` object with your own callback implementations defined in delegates (`Action<string> onGrantedCallback` is called when a permission is granted, `Action<string> onDeniedCallback` - when a permission is denied, corresponding permission name is passed as a string param).
+-	`void RequestPermission(string[] permissionNames, AndroidPermissionCallback callback)` to query for an array of permissions. Pass `AndroidPermissionCallback` object with your own callback implementations defined in delegates (`Action<string> onGrantedCallback` is called when a permission is granted, `Action<string> onDeniedCallback` - when a permission is denied, corresponding permission name is passed as a string param). NOTE: the callbacks are called from Java UI thread (which is different from Unity UI thread), so be careful about the APIs you call from the callback.
 
 ## Usage
 0.	Should work with Unity 5.3+. Please report an issue if it does not for you
