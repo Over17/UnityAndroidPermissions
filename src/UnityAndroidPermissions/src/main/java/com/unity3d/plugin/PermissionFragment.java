@@ -32,9 +32,9 @@ public class PermissionFragment extends Fragment
         }
         else
         {
-			String[] permissionNames = getArguments().getStringArray(PERMISSION_NAMES);
-			requestPermissions(permissionNames, PERMISSIONS_REQUEST_CODE);
-		}
+            String[] permissionNames = getArguments().getStringArray(PERMISSION_NAMES);
+            requestPermissions(permissionNames, PERMISSIONS_REQUEST_CODE);
+        }
     }
 
     @Override public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
