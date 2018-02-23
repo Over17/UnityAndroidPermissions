@@ -23,3 +23,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.unity3d.plugin.PermissionFragment { *; } 
+-keep class com.unity3d.plugin.UnityAndroidPermissions { *; } 
+-keep interface com.unity3d.plugin.UnityAndroidPermissions$IPermissionRequestResult { *; } 
