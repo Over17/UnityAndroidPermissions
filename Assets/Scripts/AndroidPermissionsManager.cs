@@ -66,6 +66,11 @@ public class AndroidPermissionsManager
         return GetPermissionsService().Call<bool>("IsPermissionGranted", GetActivity(), permissionName);
     }
 
+    public static void RequestPermission(string permissionName, AndroidPermissionCallback callback)
+    {
+        RequestPermission(new[] {permissionName}, callback);
+    }
+
     public static void RequestPermission(string[] permissionNames, AndroidPermissionCallback callback)
     {
         GetPermissionsService().Call("RequestPermissionAsync", GetActivity(), permissionNames, callback);
