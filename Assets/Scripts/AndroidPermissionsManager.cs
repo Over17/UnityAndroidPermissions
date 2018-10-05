@@ -5,9 +5,10 @@ public class AndroidPermissionCallback : AndroidJavaProxy
 {
     private event Action<string> OnPermissionGrantedAction;
     private event Action<string> OnPermissionDeniedAction;
+    private event Action<string> OnPermissionDeniedAndDontAskAgainAction;
 
-    public AndroidPermissionCallback(Action<string> onGrantedCallback, Action<string> onDeniedCallback) 
-        : base("com.unity3d.plugin.UnityAndroidPermissions$IPermissionRequestResult")
+    public AndroidPermissionCallback(Action<string> onGrantedCallback, Action<string> onDeniedCallback, Action<string> onDeniedAndDontAskAgainCallback)
+        : base("com.unity3d.plugin.UnityAndroidPermissions$IPermissionRequestResult2")
     {
         if (onGrantedCallback != null)
         {
@@ -16,6 +17,10 @@ public class AndroidPermissionCallback : AndroidJavaProxy
         if (onDeniedCallback != null)
         {
             OnPermissionDeniedAction += onDeniedCallback;
+        }
+        if (onDeniedAndDontAskAgainCallback != null)
+        {
+            OnPermissionDeniedAndDontAskAgainAction += onDeniedAndDontAskAgainCallback;
         }
     }
 
@@ -35,6 +40,22 @@ public class AndroidPermissionCallback : AndroidJavaProxy
         //Debug.Log("Permission " + permissionName + " DENIED!");
         if (OnPermissionDeniedAction != null)
         {
+            OnPermissionDeniedAction(permissionName);
+        }
+    }
+
+    // Handle permission denied and 'Dont ask again' selected
+    // Note: falls back to OnPermissionDenied() if action not registered
+    public virtual void OnPermissionDeniedAndDontAskAgain(string permissionName)
+    {
+        //Debug.Log("Permission " + permissionName + " DENIED and 'Dont ask again' was selected!");
+        if (OnPermissionDeniedAndDontAskAgainAction != null)
+        {
+            OnPermissionDeniedAndDontAskAgainAction(permissionName);
+        }
+        else if (OnPermissionDeniedAction != null)
+        {
+            // Fall back to OnPermissionDeniedAction
             OnPermissionDeniedAction(permissionName);
         }
     }

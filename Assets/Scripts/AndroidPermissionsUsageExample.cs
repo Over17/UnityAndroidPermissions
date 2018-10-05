@@ -42,7 +42,11 @@ public class AndroidPermissionsUsageExample : MonoBehaviour
             },
             deniedPermission =>
             {
-                // The permission was denied.
+                // The permission was denied
+            },
+            deniedPermissionAndDontAskAgain =>
+            {
+                // The permission was denied, and the user has selected "Don't ask again"
                 // Show in-game pop-up message stating that the user can change permissions in Android Application Settings
                 // if he changes his mind (also required by Google Featuring program)
             }));
