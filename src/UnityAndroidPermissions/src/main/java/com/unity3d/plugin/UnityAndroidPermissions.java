@@ -14,6 +14,11 @@ public class UnityAndroidPermissions
         void OnPermissionGranted(String permissionName);
         void OnPermissionDenied(String permissionName);
     }
+    
+    interface IPermissionRequestResult2 extends IPermissionRequestResult
+    {
+        void OnPermissionDeniedAndNeverAskAgain(String permissionName);
+    }
 
     public boolean IsPermissionGranted (Activity activity, String permissionName)
     {
@@ -31,7 +36,7 @@ public class UnityAndroidPermissions
         if (activity == null || permissionNames == null || resultCallbacks == null)
             return;
 
-        final Fragment request = new PermissionFragment(resultCallbacks);
+        final Fragment request = new PermissionFragment(activity, resultCallbacks);
         Bundle bundle = new Bundle();
         bundle.putStringArray(PermissionFragment.PERMISSION_NAMES, permissionNames);
         request.setArguments(bundle);

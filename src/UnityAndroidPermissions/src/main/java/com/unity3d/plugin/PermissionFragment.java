@@ -1,5 +1,6 @@
 package com.unity3d.plugin;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.pm.PackageManager;
@@ -12,15 +13,18 @@ public class PermissionFragment extends Fragment
     private static final int PERMISSIONS_REQUEST_CODE = 15887;
 
     private final UnityAndroidPermissions.IPermissionRequestResult m_ResultCallbacks;
+    private final Activity m_Activity;
 
     public PermissionFragment()
     {
         m_ResultCallbacks = null;
+        m_Activity = null;
     }
 
-    public PermissionFragment(final UnityAndroidPermissions.IPermissionRequestResult resultCallbacks)
+    public PermissionFragment(final Activity activity, final UnityAndroidPermissions.IPermissionRequestResult resultCallbacks)
     {
         m_ResultCallbacks = resultCallbacks;
+        m_Activity = activity;
     }
 
     @Override public void onCreate(Bundle savedInstanceState)
@@ -47,7 +51,18 @@ public class PermissionFragment extends Fragment
             if (grantResults[i] == PackageManager.PERMISSION_GRANTED)
                 m_ResultCallbacks.OnPermissionGranted(permissions[i]);
             else
-                m_ResultCallbacks.OnPermissionDenied(permissions[i]);
+            {
+                if (m_Activity != null && 
+                    !m_Activity.shouldShowRequestPermissionRationale(permissions[i]) && 
+                    (m_ResultCallbacks instanceof UnityAndroidPermissions.IPermissionRequestResult2))
+                {
+                    ((UnityAndroidPermissions.IPermissionRequestResult2) m_ResultCallbacks).OnPermissionDeniedAndNeverAskAgain(permissions[i]);
+                }
+                else
+                {
+                    m_ResultCallbacks.OnPermissionDenied(permissions[i]);
+                }
+            }
         }
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
