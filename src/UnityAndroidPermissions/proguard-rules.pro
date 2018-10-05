@@ -27,3 +27,4 @@
 -keep class com.unity3d.plugin.PermissionFragment { *; } 
 -keep class com.unity3d.plugin.UnityAndroidPermissions { *; } 
 -keep interface com.unity3d.plugin.UnityAndroidPermissions$IPermissionRequestResult { *; } 
+-keep interface com.unity3d.plugin.UnityAndroidPermissions$IPermissionRequestResult2 { *; } 
