@@ -17,7 +17,7 @@ public class UnityAndroidPermissions
     
     interface IPermissionRequestResult2 extends IPermissionRequestResult
     {
-        void OnPermissionDeniedAndNeverAskAgain(String permissionName);
+        void OnPermissionDeniedAndDontAskAgain(String permissionName);
     }
 
     public boolean IsPermissionGranted (Activity activity, String permissionName)

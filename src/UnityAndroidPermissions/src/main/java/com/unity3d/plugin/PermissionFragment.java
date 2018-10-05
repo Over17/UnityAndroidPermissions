@@ -56,7 +56,7 @@ public class PermissionFragment extends Fragment
                     !m_Activity.shouldShowRequestPermissionRationale(permissions[i]) && 
                     (m_ResultCallbacks instanceof UnityAndroidPermissions.IPermissionRequestResult2))
                 {
-                    ((UnityAndroidPermissions.IPermissionRequestResult2) m_ResultCallbacks).OnPermissionDeniedAndNeverAskAgain(permissions[i]);
+                    ((UnityAndroidPermissions.IPermissionRequestResult2) m_ResultCallbacks).OnPermissionDeniedAndDontAskAgain(permissions[i]);
                 }
                 else
                 {
